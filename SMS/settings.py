@@ -28,12 +28,13 @@ SECRET_KEY = 'django-insecure-a=&b9hbfqn=bn)0dh2cata3n(fg=^f!)373--y1o3rd9$c@7u6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,3 +138,88 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+
+JAZZMIN_SETTINGS = {
+    "site_header": "SMS",
+    "site_brand": "SMS",
+
+
+    "copyright": "MH SHUVO",
+
+    "topmenu_links": [
+        {"app": "bookkeeping"},
+        {"app": "Core"},
+        {"app": "member"},
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+    ],
+
+    "show_ui_builder": False,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-primary",
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "default",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}
+
+PWA_APP_NAME = 'Student Management System'
+PWA_APP_DESCRIPTION = 'SDP 2'
+PWA_APP_THEME_COLOR = '#000000'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': 'static/icons/desk_icon2.png',
+        'sizes': '192x192',
+        'type': 'image/png',
+    },
+    {
+        'src': 'static/icons/desk_icon2.png',
+        'sizes': '512x512',
+        'type': 'image/png',
+    },
+]
+PWA_APP_LANG = 'en-US'
+PWA_APP_SITES = {
+    'home': '/',
+}
+PWA_APP_SHORTCUTS = [
+    {
+        'name': 'Shortcut',
+        'url': '/target',
+        'description': 'Shortcut to a page in my application'
+    }
+]
+
+PWA_APP_DEBUG_MODE = DEBUG
