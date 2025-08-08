@@ -11,13 +11,23 @@ def custom_admin_login(request):
 
 urlpatterns = [
     path(
+        'manage/login/',
+        custom_admin_login,
+        name='admin-login'
+    ),
+    path(
         'manage/',
         admin.site.urls
+    ),
+    path('', include('pwa.urls')),
+    path(
+        'accounts/',
+        include('core.urls')
     ),
 
     # api url includes...................
     path(
-        '',
+        'api/v1/core/',
         include('core.api.urls')
     ),
 ]

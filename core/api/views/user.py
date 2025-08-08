@@ -26,7 +26,7 @@ class CustomUserCreateAPIView(CreateAPIView):
 
         if serializer.is_valid():
             user = serializer.save()
-            login(request, user)  # ✅ Log the user in
+            login(request, user)
             return HttpResponseRedirect(reverse('dashboard'))
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

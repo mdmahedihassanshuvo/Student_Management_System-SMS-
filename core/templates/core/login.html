@@ -1,0 +1,157 @@
+{% extends 'base_login.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block navbar_sidebar %}{% endblock %}
+{% block hide_navbar_sidebar %}true{% endblock %}
+{% block css_extra %}
+<style>
+    .login-wrapper {
+        background: #f1eeee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2rem;
+        width: 100%;
+    }
+
+    .login-form {
+        background: #333;
+        color: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .input-group {
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        color: #fff;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #333;
+        background: #fff;
+        color: #333;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+        background: #1a0664;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #110249;
+    }
+
+    .or {
+        margin: 15px 0;
+        color: #fff;
+    }
+
+    .google-btn {
+        background: #1a0664;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .google-btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+
+    .google-btn span {
+        color: white;
+    }
+
+    .google-btn:hover {
+        background: #110249;
+    }
+
+    .login-link {
+        margin-top: 10px;
+        color: #fff;
+    }
+
+    .login-link a {
+        color: #7b52ff;
+        text-decoration: none;
+    }
+
+    .login-image-animate {
+        animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+</style>
+{% endblock css_extra %}
+
+{% block content %}
+<div class="login-wrapper bg-white">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6">
+                <div class="login-form">
+                    <h2 class="kalpurush">Login Now</h2>
+                    <form method="POST" action="{% url 'user_login' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <label for="email" class="kalpurush">Email/Username</label>
+                            <input type="email" id="email" class="kalpurush" name="email" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn kalpurush">Login</button>
+                    </form>
+                    <div class="or kalpurush">OR</div>
+                    <div class="google-btn">
+                        <img src="#" alt="Google"> <span class="kalpurush">Login with Google</span>
+                    </div>
+                    <div class="login-link kalpurush">Don't have any account? <a href="{% url 'core:register' %}">Register</a></div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 d-md-flex justify-content-start align-items-center">
+                <img class="login-image-animate" style="width: 450px;" src="{% static 'images/login.jpg' %}" alt="Login Image">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_extra %}
+{% endblock %}

@@ -3,10 +3,13 @@ from .user import (
     CustomUserManager,
 )
 from .common import CommonModels
+from .sidebar import MenuSection, MenuItem
 
 
 __all__ = [
     CustomUserManager,
     CustomUser,
-    CommonModels
+    CommonModels,
+    MenuSection,
+    MenuItem
 ]

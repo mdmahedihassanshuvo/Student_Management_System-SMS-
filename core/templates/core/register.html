@@ -1,0 +1,157 @@
+{% extends 'base_login.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% block css_extra %}
+<style>
+    .register-wrapper {
+        min-height: 100vh;
+        background: #f1eeee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    #register-form {
+        background: #333;
+        color: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        border: 2px solid #333;
+    }
+
+    .input-group {
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        color: #fff;
+        margin-bottom: 5px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #333;
+        background: #fff;
+        color: #333;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+        background: #1a0664;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #110249;
+    }
+
+    .or {
+        margin: 15px 0;
+        color: #fff;
+    }
+
+    .google-btn {
+        background: #1a0664;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .google-btn img {
+        width: 20px;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    .google-btn span {
+        color: white;
+    }
+
+    .google-btn:hover {
+        background: #110249;
+    }
+
+    .login-link {
+        margin-top: 10px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .login-link a {
+        color: #7b52ff;
+        text-decoration: none;
+    }
+
+    .login-image-animate {
+        animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
+{% endblock css_extra %}
+
+{% block content %}
+<div class="register-wrapper bg-white">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6">
+                <div id="register-form">
+                    <h2 class="text-center">Register Now</h2>
+                    <form method="POST" action="{% url 'user_register' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="full_name">Full Name</label>
+                            <input type="text" id="full_name" name="full_name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                    <div class="or text-center">OR</div>
+                    <div class="google-btn">
+                        <img src="#" alt="Google"> 
+                        <span>Register with Google</span>
+                    </div>
+                    <div class="login-link">Already have an account? 
+                        <a href="{% url 'core:login' %}">Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-md-flex justify-content-start align-items-center">
+                <img class="login-image-animate" style="width: 450px;" src="{% static 'images/login.jpg' %}" alt="Login Image">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

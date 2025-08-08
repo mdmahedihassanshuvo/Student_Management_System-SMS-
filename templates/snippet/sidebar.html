@@ -1,0 +1,63 @@
+{% load pwa %}
+{% load menu_tags %}
+
+<style>
+    @import url('https://fonts.maateen.me/kalpurush/font.css');
+    .dashboard a {
+        font-size: 22px;
+        text-decoration: none;
+        background-color: #ecedff;
+        color: black;
+        margin: 0px 10px;
+        border-radius: 10px;
+        display: block;
+        padding: 5px 0px;
+    }
+
+    .link {
+        margin: 0px 10px;
+        border-radius: 10px;
+    }
+
+    h4.text-center {
+        text-align: center;
+    }
+    .span-text {
+        width: 20%;
+    }
+    .kalpurush {
+        font-family: 'Kalpurush', sans-serif !important;
+    }
+    .section-title{
+        background-color: #fff;
+        color: black;
+        text-align: center;
+        margin: 0px;
+        padding: 5px 5px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<h4 class="text-center dashboard">
+    <a class="kalpurush text-left ps-4" href="/">
+        <i class="fas fa-tachometer-alt"></i> ড্যাশবোর্ড
+    </a>
+</h4>
+<hr>
+
+{% for section in menu_sections %}
+    <div class="section-title">
+        <h5 class="kalpurush">{{ section.title }}</h5>
+    </div>
+    {% for item in section.permitted_menu_items %}
+        <div>
+            <a class="link kalpurush" href="{{ item.get_absolute_url }}">
+                <span class="me-2 span-text"><i class="{{ item.icon_class }}"></i></span> {{ item.title }}
+            </a>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<!-- Optional: Block for extra sidebar content -->
+{% block sidebar_extra %}{% endblock %}
